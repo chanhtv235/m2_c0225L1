@@ -8,11 +8,12 @@ import java.util.List;
 
 public class StudentRepository implements IStudentRepository {
      private final String STUDENT_FILE ="src/mvc/data/student.csv";
+     private final String STUDENT_FILE_DAT ="src/mvc/data/student.dat";
      private final boolean APPEND = true;
     @Override
     public List<Student> findAll() {
         List<Student> studentList = new ArrayList<>();
-        // sau nay đọc ghi file thêm vào list
+        // sau nay đọc ghi file text
         List<String> stringList = ReadAndWriteFile.readFileCSV(STUDENT_FILE);
         String[] array =null;
         for (String line: stringList) {
@@ -21,6 +22,8 @@ public class StudentRepository implements IStudentRepository {
                                            Float.parseFloat(array[3]),array[4]);
             studentList.add(student);
         }
+        // sau nay đọc ghi file.dat
+//        studentList = ReadAndWriteFile.readFileBinary(STUDENT_FILE_DAT);
         return studentList;
     }
 
@@ -29,7 +32,10 @@ public class StudentRepository implements IStudentRepository {
         List<String> stringList = new ArrayList<>();
         stringList.add(student.getInfoToCSV());
         ReadAndWriteFile.writeListToCSV(STUDENT_FILE,stringList,APPEND);
-        // ghi vào file
+        // ghi vào file dat
+//        List<Student> studentList = ReadAndWriteFile.readFileBinary(STUDENT_FILE_DAT);
+//        studentList.add(student);
+//        ReadAndWriteFile.writeListStudentToBinaryFile(STUDENT_FILE_DAT,studentList);
     }
 
     @Override

@@ -1,6 +1,8 @@
 package mvc.entity;
 
-public class Student extends Person {
+import java.io.Serializable;
+
+public class Student extends Person{
     private float point;
     private String className;
 

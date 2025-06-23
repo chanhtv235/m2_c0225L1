@@ -1,6 +1,7 @@
 package mvc.view;
 
 import mvc.entity.Student;
+import mvc.regex.CheckRegexStudent;
 
 import java.util.List;
 import java.util.Scanner;
@@ -22,8 +23,12 @@ public class StudentView {
         String address = scanner.nextLine();
         System.out.println("Nhập Điểm");
         int point = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhập Tên Lớp");
-        String className = scanner.nextLine();
+        String className ="";
+        do {
+            System.out.println("Nhập Tên Lớp");
+            className = scanner.nextLine();
+        }while (!CheckRegexStudent.checkClasName(className));
+
         return  new Student(code,name,address,point,className);
     }
 }
